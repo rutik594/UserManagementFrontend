@@ -1,0 +1,14 @@
+<!-- navbar.component.html -->
+<div class="navbar">
+    <a href="#" class="navbar-logo">User Management</a>
+    <div class="navbar-right">
+        <!-- Show "Logout" button only if the user is authenticated and not on the login page -->
+        <a *ngIf="showHomeLink && !isLoginPage" (click)="logout()" href="#">Logout</a>
+    
+        <!-- "Login" button displayed when the user is not authenticated or on the login page -->
+        <a *ngIf="!showHomeLink && !isLoginPage " href="/login">Login</a>
+      </div>
+      
+  </div>
+
+  <router-outlet></router-outlet>

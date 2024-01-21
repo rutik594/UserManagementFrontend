@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Registration</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="userName">Username:</label>
+      <input type="text" id="userName" class="form-control" formControlName="userName" required>
+      <div *ngIf="registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched">
+        <div *ngIf="registerForm.controls['userName'].hasError('required')">Username is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="userFirstName">First Name:</label>
+      <input type="text" id="firstName" class="form-control" formControlName="userFirstName" required>
+      <div *ngIf="registerForm.controls['userFirstName'].invalid && registerForm.controls['userFirstName'].touched">
+        <div *ngIf="registerForm.controls['userFirstName'].hasError('required')">First Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="userLastName">Last Name:</label>
+      <input type="text" id="lastName" class="form-control" formControlName="userLastName" required>
+      <div *ngIf="registerForm.controls['userLastName'].invalid && registerForm.controls['userLastName'].touched">
+        <div *ngIf="registerForm.controls['userLastName'].hasError('required')">Last Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="userPassword">Password:</label>
+      <input type="password" id="userPassword" class="form-control" formControlName="userPassword" required>
+      <div *ngIf="registerForm.controls['userPassword'].invalid && registerForm.controls['userPassword'].touched">
+        <div *ngIf="registerForm.controls['userPassword'].hasError('required')">Password is required.</div>
+        <div *ngIf="registerForm.controls['userPassword'].hasError('minlength')">Password must be at least 6 characters long.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-register" [disabled]="!registerForm.valid">Register</button>
+    </div>
+  </form>
+  
+</div>

@@ -1,0 +1,26 @@
+<!-- login.component.html -->
+<div class="container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="userName">Username:</label>
+      <input type="text" id="userName" class="form-control" formControlName="userName" required>
+    </div>
+    <div class="form-group">
+      <label for="userPassword">Password:</label>
+      <input type="password" id="userPassword" class="form-control" formControlName="userPassword" required>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+   <!-- Separate div to display error message -->
+   <div *ngIf="isFormSubmitted && loginForm.invalid" class="error-message">
+    Please fill all fields.
+  </div>
+  
+  <!-- Separate div to display login error -->
+  <div *ngIf="loginError" class="error-message">
+    {{ loginError }}
+  </div>
+</div>

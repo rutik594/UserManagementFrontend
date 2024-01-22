@@ -26,6 +26,8 @@
     </tbody>
   </table>
 
+  
+
   <!-- Pagination Section -->
   <div *ngIf="users.length > pageSize" class="pagination">
     <button *ngFor="let page of paginationService.generatePageNumbers(users.length, pageSize)"
@@ -34,4 +36,23 @@
       {{ page }}
     </button>
   </div>
+
+
+  
+
+  <!-- Edit Form Section -->
+  <div *ngIf="isAdmin && isEditFormVisible && selectedUser" class="edit-form">
+    <h3>Edit User</h3>
+    <form (ngSubmit)="submitEditForm()">
+      <label for="userFirstName">First Name:</label>
+      <input type="text" id="userFirstName" name="userFirstName" [(ngModel)]="selectedUser.userFirstName">
+
+      <label for="userLastName">Last Name:</label>
+      <input type="text" id="userLastName" name="userLastName" [(ngModel)]="selectedUser.userLastName">
+
+      <button type="submit">Submit</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
 </div>
+
